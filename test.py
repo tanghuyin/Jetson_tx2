@@ -1,10 +1,18 @@
 import torch
 import torchvision
-from torchvision import datasets, tranforms
+from torch.autograd import Variable
+import torch.utils.data as dataloader
+import time
 
 
-data_train = datasets.MNIST(root="./data/", transform=transform, train=True, download=True)
+torch.manual_seed(1)
 
-data_test = datasets.MNIST(root="./data/", transform=transform, train=True, download=False)
+EPOCH = 1
+BATCH_SIZE = 50
+LR = 0.001
 
-
+data_train = torchvision.datasets.MNIST(
+	root="./data/", 
+	transform=torchvision.transforms.ToTensor,
+	train=True, 
+	download=True)
